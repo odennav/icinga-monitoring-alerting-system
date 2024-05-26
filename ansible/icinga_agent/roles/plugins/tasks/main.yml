@@ -1,0 +1,28 @@
+- name: Install Icinga client in remote server
+  tags:
+    - install_icinga_client
+
+
+  block:
+
+
+    - name: Add Icinga repository to package mgt configuration
+      ansible.builtin.shell: yum install https://packages.icinga.com/epel/icinga-rpm-release-7-latest.noarch.rpm >> /dev/null
+      tags:
+        - add_icinga_repo
+
+    - name: Enable the EPEL repository
+      ansible.builtin.shell: sudo dnf install -y epel-release >> /dev/null
+      tags:
+        - add_epel_repo
+
+    - name: Enable the PowerTools repository
+      ansible.builtin.shell: sudo dnf config-manager --set-enabled >> /dev/null
+      tags:
+        - add_powertools_repo
+
+    - name: Install Icinga and Nagios monitors
+      ansible.builtin.shell: sudo dnf install -y icinga2 nagios-plugins-all >> /dev/null
+      tags:
+        - add_icinga_nagios_monitors
+

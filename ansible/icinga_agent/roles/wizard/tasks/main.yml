@@ -1,0 +1,69 @@
+- name: Icinga Node Wizard
+  tags:
+    - icinga_node_wizard
+      #  vars_files:
+      #- vars/hostnames.yml
+
+
+  block:
+
+    - name: Copy PKI ticket text file to remote server
+      ansible.builtin.copy:
+        src: /ipsec/pki/pki-{{ inventory_hostname }}.txt
+        dest: /ipsec/icinga_scripts/pki/pki-{{ inventory_hostname }}.txt
+        owner: odennav
+        group: odennav
+        mode: '0755'
+      tags:
+        - copy_pki_ticket_file
+
+    - name: Copy script to extract pki ticket value
+      ansible.builtin.copy:
+        src: /icinga-monitoring-alerting-system/pki/get_ticket.sh
+        dest: /ipsec/icinga_scripts/pki/get_ticket.sh
+        owner: odennav
+        group: odennav
+        mode: '0755'
+      tags:
+        - copy_get_ticket_script
+
+    - name: Copy Icinga node wizard script
+      ansible.builtin.copy:
+        src: /icinga-monitoring-alerting-system/pki/icinga_node_wizard.sh
+        dest: /ipsec/icinga_scripts/pki/icinga_node_wizard.sh
+        owner: odennav
+        group: odennav
+        mode: '0755'
+      tags:
+        - copy_wizard_script
+
+
+    - name: Extract PKI ticket value 
+      ansible.builtin.shell: sudo ./get_ticket.sh {{ inventory_hostname }}
+      args:
+        chdir: /ipsec/icinga_scripts/pki/
+      tags:
+        - extract_replace_pki_ticket
+
+
+    - name: Execute Icinga node wizard
+      ansible.builtin.shell: sudo ./icinga_node_wizard.sh
+      args:
+        chdir: /ipsec/icinga_scripts/pki/
+      tags:
+        - pki_ticket_each_host
+
+
+    - name: Restart icinga2.service
+      ansible.builtin.systemd_service:
+        state: restarted
+        daemon_reload: true
+        name: icinga2.service
+
+
+    - name: Enable icinga2.service
+      ansible.builtin.systemd_service:
+        name: icinga2.service
+        enabled: true
+        masked: no
+

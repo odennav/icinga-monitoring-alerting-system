@@ -1,0 +1,10 @@
+---
+
+hostnames:
+  - central-server2
+  - message-processor-1
+  - message-processor-2
+  - message-processor-3
+  - message-processor-4
+  - message-processor-5
+  - jenkins-slave-1 

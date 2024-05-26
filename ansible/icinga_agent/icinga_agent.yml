@@ -1,0 +1,35 @@
+---
+
+# Run LAMP and plugins roles
+- hosts: central_server_2,message_processors,jenkins_slave
+  become: true
+  tasks:
+    - name: Run LAMP role
+      include_role:
+        name: LAMP
+
+    - name: Run plugins role
+      include_role:
+        name: plugins
+
+# Run pki_ticket role
+- hosts: central_server_1
+  become: true
+  tasks:
+    - name: Run pki_ticket role
+      include_role:
+        name: pki_ticket
+
+# Run object_conf and wizard roles
+- hosts: central_server_2,message_processors,jenkins_slave
+  become: true
+  tasks:
+    - name: Run object_conf role
+      include_role:
+        name: object_conf
+
+    - name: Run wizard role
+      include_role:
+        name: wizard
+
+          

@@ -1,0 +1,22 @@
+[central_server_1]
+192.168.10.1  ansible_user={{ user }} ansible_password={{ password }}
+
+
+[central_server_2]
+192.168.10.6  ansible_user={{ user }} ansible_password={{ password }}
+
+
+[message_processors]
+192.168.20.2  ansible_user={{ user }} ansible_password={{ password }} 
+192.168.20.3  ansible_user={{ user }} ansible_password={{ password }}
+192.168.20.4  ansible_user={{ user }} ansible_password={{ password }}
+192.168.20.5  ansible_user={{ user }} ansible_password={{ password }}
+192.168.20.7  ansible_user={{ user }} ansible_password={{ password }}
+
+
+
+[jenkins_slave]
+192.168.10.8  ansible_user={{ user }} ansible_password={{ password }}
+
+
+

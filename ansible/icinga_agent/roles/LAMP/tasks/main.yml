@@ -1,0 +1,45 @@
+- name: Deployment of LAMP stack in remote server
+  tags:
+    - setup_lamp_stack
+
+
+  block:
+    - name: Create parent directories
+      ansible.builtin.file:
+        path: /ipsec/icinga_scripts/
+        state: directory
+        mode: '0755'
+        owner: odennav
+        group: odennav
+      tags:
+        - create_icinga_scripts_dir 
+
+
+    - name: Copy LAMP installation script to remote server
+      ansible.builtin.copy:
+        src: /icinga-monitoring-alerting-system/lamp/wordpress_install.sh
+        dest: /ipsec/icinga_scripts/
+        owner: odennav
+        group: odennav
+        mode: '0755'
+      tags:
+        - copy_wordpress_install_script
+
+
+    - name: Integrate database password
+      ansible.builtin.replace:
+        path: /ipsec/icinga_scripts/wordpress_install.sh
+        regexp: 'pass123'
+        replace: {{ wordpress_db_pass }}
+      tags:
+        - integrate_db_pass
+
+
+    - name: Change the work dir before executing the command
+      ansible.builtin.shell: sudo ./wordpress_install.sh 
+        args:
+        chdir: /ipsec/icinga_scripts/
+      tags:
+        - chdir_exec_script
+
+

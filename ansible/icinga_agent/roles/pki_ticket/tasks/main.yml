@@ -1,0 +1,34 @@
+- name: Create PKI ticket for Remote Hosts
+  tags:
+    - generate_pki_tickets
+      # vars_files:
+      # - vars/hostnames.yml
+
+
+  block:
+
+    - name: Create parent directories
+      ansible.builtin.file:
+        path: /ipsec/pki/
+        state: directory
+        mode: '0755'
+        owner: odennav
+        group: odennav
+      tags:
+        - create_icinga_pki_dir 
+
+
+    - name: Touch the pki text file
+      ansible.builtin.file:
+        path: /ipsec/pki/pki-{{ inventory_hostname }}.txt
+        state: touch
+        mode: '0755'
+      tags:
+        - touch_pki_text_file    
+
+
+    - name: Generate PKI ticket for each hostname
+      ansible.builtin.shell: sudo icinga2 pki ticket --cn  {{ inventory_hostname }} >> /ipsec/pki/pki-{{ inventory_hostname }}.txt
+      tags:
+        - pki_ticket_each_host    
+
