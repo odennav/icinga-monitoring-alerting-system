@@ -74,21 +74,6 @@ Vagrant.configure("2") do |config|
 
 
 
-    config.vm.define "cs2" do |cs2|
-      cs2.vm.box = "boxomatic/centos-stream-9"
-      cs2.vm.hostname = "central-server2"
-      cs2.vm.network "private_network", ip: "192.168.10.6"
-      cs2.vm.synced_folder ".", "/vagrant"
-      cs2.vm.provider "virtualbox" do |vb|
-        vb.name = "cellusys-central2"
-        vb.memory = "4096"
-        vb.cpus = 2
-
-      end  
-
-    end    
-
-
     config.vm.define "mp5" do |mp5|
       mp5.vm.box = "boxomatic/centos-stream-9"
       mp5.vm.hostname = "message-processor-5"
