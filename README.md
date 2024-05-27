@@ -21,6 +21,8 @@ We'll implement the workflow below:
 
 - Remote Hosts Monitoring Setup
 
+The LAMP stack is required to host Icinga2 stack. 
+
 -----
 
 ## Provision Servers
@@ -612,6 +614,8 @@ This playbook will implement the following tasks for remote servers:
 ansible-playbook -i hosts.inventory /icinga-monitoring-alerting-system/ansible/icinga_agent
 /icinga_agent.yml
 ```
+
+The LAMP stack is deployed to all remote hosts and will be monitored by Icinga as a use-case.
 
 Enjoy!
 
