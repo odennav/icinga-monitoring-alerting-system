@@ -7,7 +7,7 @@ It's a scalable and extensible software which can monitor large, complex environ
 
 Also note Icinga collects and sends data from and to many existing DevOps tools, enabling you to create a tailored monitoring solution that perfectly fits your needs.
 
-The objective of this project is to monitor the availability of the cellusys machines(central-servers and message-processors) in this guide.
+The objective of this project is to monitor the availability of the cellusys machines(message-processors) in this guide.
 
 # Getting Started
 
@@ -309,112 +309,147 @@ Simply follow the guided installation process.
 
 Below is a list of screen names followed by any required information:
 
-`**Modules**`
-Accept the defaults by clicking "Next."
-
-`**Icinga Web 2**`
+**`Modules`**
 
 Accept the defaults by clicking "Next."
 
-`**Authentication**`
+**`Icinga Web 2`**
 
 Accept the defaults by clicking "Next."
 
-`**Database Resource**`
+**`Authentication`**
+
+Accept the defaults by clicking "Next."
+
+**`Database Resource`**
 
 Resource Name: icingaweb_db
+
 Database Type: MySQL
+
 Host: localhost
+
 Port: (leave blank - the default)
+
 Database Name: icingaweb
+
 Username: icingaweb
+
 Password: icingaweb123
+
 Character Set: (leave blank - the default)
+
 Use SSL: (leave unchecked - the default)
 
 Click "Validate Configuration"
+
 Click "Next
 
 
-`**Authentication Backend**`
+**`Authentication Backend`**
 
 Accept the defaults by clicking "Next."
 
-`**Administration**`
+**`Administration`**
 
 Username: admin
+
 Password: admin
+
 Repeat password: admin
 
 Click "Next."
 
 
-`**Application Configuration**`
+**`Application Configuration`**
 
 Accept the defaults by clicking "Next."
 
-`**You've configured Icinga Web 2 successfully**`
+**`You've configured Icinga Web 2 successfully`**
+
 Click "Next."
 
-`**Welcome to the configuration of the monitoring module for Icinga Web 2**`
+**`Welcome to the configuration of the monitoring module for Icinga Web 2`**
+
 Click "Next."
 
-`**Monitoring Backend**`
+**`Monitoring Backend`**
 
 Accept the defaults by clicking "Next."
 
-`**Monitoring IDO Resource**`
+**`Monitoring IDO Resource`**
 
 Resource Name : icinga_ido
+
 Database Type: MySQL
+
 Host: localhost
+
 Port: (leave blank - the default)
+
 Database Name: icinga
+
 Username: icinga
+
 Password: icinga123
+
 Character Set: (leave blank - the default)
+
 Use SSL: (leave unchecked - the default)
 
 Click "Validate Configuration"
+
 Click "Next"
 
 
-`**Command Transport**`
+**`Command Transport`**
 
 Transport Name: icinga2
+
 Transport Type: Icinga 2 API
+
 Host: localhost
+
 Port: 5665
+
 SSH port to connect to on the remote Icinga instance
+
 API Username: root
+
 API Password: (Use the value noted from above. Hint: return to the command line and look at
 the /etc/icinga2/conf.d/api-users.conf file)
+
 Click "Validate Configuration"
+
 Click "Next
 
-`**Monitoring Security**`
+**`Monitoring Security`**
 
 Accept the defaults by clicking "Next."
 
-`**You've configured the monitoring module successfully**`
+**`You've configured the monitoring module successfully`**
 
 Click "Finish"
 
+
+
+
 **Log into the Web Front End**
 
-After the installation is complete, you can access Icinga via the web at
-`192.168.10.1/icingaweb2`. 
+After the installation is complete, you can access Icinga via the web at `192.168.10.1/icingaweb2`. 
 
-Use username as "admin" and the password as "admin".
+Use username as `admin` and the password as `admin`.
 
 
 ** Create Configuration Directory for Master Zone**
 
 A default zone named "master" is created, when you run the Icinga node wizard.
+
 In Icinga, a zone is a trust hierarchy.
 
-For example, members of the master Icinga zone are allowed to send their Icinga
-check results to the master server. When we start to monitor other servers, which are called Icinga clients or Icinga satellites, they will be part of the master zone.
+For example, members of the master Icinga zone are allowed to send their Icinga check results to the master server. 
+
+When we start to monitor other servers, which are called Icinga clients or Icinga satellites, they will be part of the master zone.
 
 All the configuration for members of the master zone will reside here
 ```bash
