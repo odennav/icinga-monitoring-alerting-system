@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# This script runs the node wizard and tells the client/agent about the master icinga server
+
+# Heredoc used to stream input to wizard
+
 sudo icinga2 node wizard << EOF
 Y
 Enter

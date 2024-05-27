@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script replaces the PKI placeholder with actual ticket value in the icinga_node_wizard script
+
 extractTicket() {
 
     local host="$1"
