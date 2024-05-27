@@ -5,8 +5,6 @@ Icinga is an open-source monitoring system that checks the availability of netwo
 
 It's a scalable and extensible software which can monitor large, complex environments across multiple locations. 
 
-Also note Icinga collects and sends data from and to many existing DevOps tools, enabling you to create a tailored monitoring solution that perfectly fits your needs.
-
 The objective of this project is to monitor the availability of the cellusys machines(message-processors) in this guide.
 
 # Getting Started
