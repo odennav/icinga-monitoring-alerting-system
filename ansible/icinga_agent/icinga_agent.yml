@@ -1,7 +1,7 @@
 ---
 
 # Run LAMP and plugins roles
-- hosts: central_server_2,message_processors,jenkins_slave
+- hosts: message_processors,jenkins_slave
   become: true
   tasks:
     - name: Run LAMP role
@@ -21,7 +21,7 @@
         name: pki_ticket
 
 # Run object_conf and wizard roles
-- hosts: central_server_2,message_processors,jenkins_slave
+- hosts: message_processors,jenkins_slave
   become: true
   tasks:
     - name: Run object_conf role

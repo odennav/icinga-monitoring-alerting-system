@@ -1,5 +1,4 @@
 hostnames:
-  - central-server2
   - message-processor-1
   - message-processor-2
   - message-processor-3
