@@ -301,9 +301,7 @@ sudo icingacli setup token create
 
 Next, open a web browser on your local system and navigate to `192.168.10.1/icingaweb2/setup`.
 
-Enter token created earlier and click `Next`.
-
-Simply follow the guided installation process.
+Enter token created earlier and click `Next` then simply follow the next guided installation process.
 
 Below is a list of screen names followed by any required information:
 
