@@ -21,7 +21,7 @@ We'll implement the workflow below:
 
 - Remote Hosts Monitoring Setup
 
-The LAMP stack is required to host Icinga2 stack. 
+The LAMP stack is required in central server to host Icinga2 stack. 
 
 -----
 
