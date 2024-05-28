@@ -57,7 +57,7 @@ vagrant ssh
 
 A LAMP stack is a bundle of four different software technologies used to build websites and web applications. 
 
-LAMP is an acronym for the operating system, Linux; the web server, Apache; the database server, MySQL; and the programming language, PHP.
+LAMP is an acronym for the operating system(Linux), web server(Apache), database server(MariaDB) and PHP programming language.
 
 Install Apache web server
 ```bash
