@@ -285,8 +285,9 @@ Start and enable the icinga2 service
 sudo systemctl start icinga2.service
 sudo systemctl enable icinga2.service
 ```
+-----
 
-**Configure Web Front End**
+**Configure Icinga Web Frontend**
 
 Restart `httpd` service for icingaweb2 to recognize changes
 ```bash
@@ -432,9 +433,9 @@ Accept the defaults by clicking `Next.`
 Click `Finish`
 
 
+-----
 
-
-**Log into the Web Front End**
+**Access the Icinga Web Frontend**
 
 After the installation is complete, you can access Icinga via the web at `192.168.10.1/icingaweb2`. 
 
