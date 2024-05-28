@@ -26,14 +26,32 @@
         - copy_wordpress_install_script
 
 
-    - name: Integrate database password
+    - name: Replace database user password in lamp install script
       ansible.builtin.replace:
         path: /ipsec/icinga_scripts/wordpress_install.sh
-        regexp: 'pass123'
-        replace: {{ wordpress_db_pass }}
+        regexp: 'wordpress123'
+        replace: {{ wordpress_db_user_pass }}
       tags:
-        - integrate_db_pass
+        - replace_db_user_pass
 
+
+    - name: Replace database root password in lamp install script
+      ansible.builtin.replace:
+        path: /ipsec/icinga_scripts/wordpress_install.sh
+        regexp: 'rootpassword123'
+        replace: {{ wordpress_db_root_pass }}
+      tags:
+        - replace_db_root_pass
+          
+
+    - name: Insert IPv4 address of remote server in lamp install script
+      ansible.builtin.replace:
+        path: /ipsec/icinga_scripts/wordpress_install.sh
+        regexp: 'localhost'
+        replace: {{ inventory_hostname }}
+      tags:
+        - replace_localhost
+          
 
     - name: Change the work dir before executing the command
       ansible.builtin.shell: sudo ./wordpress_install.sh 
