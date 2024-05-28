@@ -5,11 +5,13 @@ Icinga is an open-source monitoring system that checks the availability of netwo
 
 It's a scalable and extensible software which can monitor large, complex environments across multiple locations. 
 
-The objective of this project is to monitor the availability of the cellusys machines(message-processors) in this guide.
+The objective of this project is to monitor the availability of the cellusys machines and their hosted LAMP stack in this guide.
 
 Special thanks to [Icinga](https://icinga.com) team.
 
 # Getting Started
+
+The cellusys machines are also known as message-processors.
 
 We'll implement the workflow below:
 
