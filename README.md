@@ -612,7 +612,10 @@ This playbook will implement the following tasks for remote servers:
 ansible-playbook -i hosts.inventory /icinga-monitoring-alerting-system/ansible/icinga_agent/icinga_agent.yml -e @/icinga-monitoring-alerting-system/ansible/ansible-vault/values.yml
 ```
 
-The LAMP stack is deployed to all remote hosts and will be monitored by Icinga as a use-case.
+The LAMP stack deployed to all remote hosts will be monitored as a use-case to verify functionality of Icinga monitoring system.
+
+-----
+
 
 Enjoy!
 
