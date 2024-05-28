@@ -607,7 +607,7 @@ This playbook will implement the following tasks for remote servers:
 
 - Create PKI ticket 
 
-- Configure agent monitors on icinga master
+- Configure agent monitors on Icinga master
 
 
 ```bash
