@@ -2,6 +2,6 @@ user: **********
 password: **********
 
 
-wordpress_db_pass: **********
-
+wordpress_db_root_pass: **********
+wordpress_db_user_pass: **********
 
