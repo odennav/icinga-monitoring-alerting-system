@@ -26,9 +26,9 @@ sudo mysql -e "GRANT ALL ON wordpress.* TO wordpress@localhost IDENTIFIED BY 'wo
 sudo mysql -e "FLUSH PRIVILEGES;"
 
 # Secure MariaDB by changing password
-sudo echo -e "\n\nrootpassword123\nrootpassword123\n\n\n\n\n" | mysql_secure_installation
+sudo mysql_secure_installation <<< $'\n\nrootpassword123\nrootpassword123\n\n\n\n\n' 
 
-# Download and extract Wordpress
+# Download, extract and move Wordpress to apache webserver root directory
 TMP_DIR=$(mktemp -d)
 sudo cd $TMP_DIR
 sudo curl -sOL https://wordpress.org/wordpress-5.5.1.tar.gz
