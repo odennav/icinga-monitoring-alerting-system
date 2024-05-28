@@ -7,6 +7,8 @@ It's a scalable and extensible software which can monitor large, complex environ
 
 The objective of this project is to monitor the availability of the cellusys machines(message-processors) in this guide.
 
+Special thanks to [Icinga](https://icinga.com) team.
+
 # Getting Started
 
 We'll implement the workflow below:
