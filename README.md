@@ -7,7 +7,13 @@ It's a scalable and extensible software which can monitor large, complex environ
 
 The objective of this project is to monitor the availability of the cellusys machines and their hosted LAMP stack in this guide.
 
-Special thanks to [Icinga](https://icinga.com) team.
+The host operating system in cellusys machines is cent0S.
+
+We'll implement the common setup of icinga agent in a distributed environment.
+
+![](https://github.com/odennav/icinga-monitoring-alerting-system/blob/main/docs/Icinga_master_agent_setup.png)
+
+Special thanks to the amazing [Icinga](https://icinga.com) team.
 
 # Getting Started
 
