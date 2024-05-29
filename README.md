@@ -11,7 +11,7 @@ The host operating system on Cellusys machines is CentOS.
 We will implement the standard setup of the Icinga agent within a distributed environment.
 
 
-![](https://github.com/odennav/icinga-monitoring-alerting-system/blob/main/docs/Icinga_master_agent_setup.png)
+![](https://github.com/odennav/icinga-monitoring-alerting-system/blob/main/docs/master_with_agents.png)
 
 Special thanks to the amazing [Icinga](https://icinga.com) team.
 
