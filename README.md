@@ -8,7 +8,7 @@ The objective of this project is to monitor the availability of Cellusys machine
 
 The host operating system on Cellusys machines is CentOS.
 
-We will implement the standard setup of the Icinga agent within a distributed environment.
+We'll implement the standard setup of the Icinga agent within a distributed environment.
 
 
 ![](https://github.com/odennav/icinga-monitoring-alerting-system/blob/main/docs/master_with_agents.png)
