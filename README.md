@@ -31,6 +31,8 @@ We'll implement the workflow below:
 
 - Remote Hosts Monitoring Setup
 
+- SMTP Relay Server Setup
+
 The LAMP stack is required in central server to host Icinga2 stack. 
 
 -----
@@ -637,7 +639,7 @@ mailersend have a trial domain that is verified and ready to use for this projec
 
 Ensure you have access to you domain's DNS records, if you're interested in long-term and scalable solution.
 
-Add and verify your domain as shown [here] (https://www.mailersend.com/help/how-to-verify-and-authenticate-a-sending-domain)
+Add and verify your domain as shown [here](https://www.mailersend.com/help/how-to-verify-and-authenticate-a-sending-domain)
 
 
 **Send Emails using SMTP**
