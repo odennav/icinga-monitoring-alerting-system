@@ -1,15 +1,15 @@
 # Monitoring and Alerting with Icinga
 
+Icinga is an open-source monitoring system designed to verify the availability of network resources, alert users to any issues, and aggregate data for comprehensive reporting.
 
-Icinga is an open-source monitoring system that checks the availability of network resources, notifies users of problems that occur, and aggregates data for effective reporting.
+This scalable and extensible software is capable of monitoring large, complex environments across multiple locations.
 
-It's a scalable and extensible software which can monitor large, complex environments across multiple locations. 
+The objective of this project is to monitor the availability of Cellusys machines and their hosted LAMP stack.
 
-The objective of this project is to monitor the availability of the cellusys machines and their hosted LAMP stack in this guide.
+The host operating system on Cellusys machines is CentOS.
 
-The host operating system in cellusys machines is cent0S.
+We will implement the standard setup of the Icinga agent within a distributed environment.
 
-We'll implement the common setup of icinga agent in a distributed environment.
 
 ![](https://github.com/odennav/icinga-monitoring-alerting-system/blob/main/docs/Icinga_master_agent_setup.png)
 
