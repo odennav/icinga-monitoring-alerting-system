@@ -579,7 +579,7 @@ openssl rand -base64 2048 > /icinga-monitoring-alerting-system/ansible/ansible-v
 
 Create ansible vault with vault password file
 ```bash
-ansible-vault create /icinga-monitoring-alerting-system/ansible/ansible-vault/values.yml --vault-password-file=/server-health-monitoring/ansible/ansible-vault/secret-vault.pass
+ansible-vault create /icinga-monitoring-alerting-system/ansible/ansible-vault/values.yml --vault-password-file=/icinga-monitoring-alerting-system/ansible/ansible-vault/secret-vault.pass
 ```
 
 View content of ansible vault
