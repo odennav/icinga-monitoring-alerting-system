@@ -531,7 +531,7 @@ We'll need to install and use ansible to ensure consisitent and efficient config
 
 **Install Ansible**
 
-To install ansibe without upgrading current python version, we'll make use of the yum packae manager
+To install ansibe without upgrading current python version, we'll make use of the yum package manager.
 
 ```bash
 sudo yum update
