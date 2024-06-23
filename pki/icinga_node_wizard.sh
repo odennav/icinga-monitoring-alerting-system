@@ -9,7 +9,7 @@ Y
 Enter
 central-server1
 Y
-192.168.10.1
+10.33.10.1
 Enter
 N
 y
