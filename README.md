@@ -561,7 +561,7 @@ Restart the icinga service
 sudo systemctl restart icinga2.service
 ```
 
-Confirm the check for `10.33.10.1/icingaweb2 on the icinga web frontend. It should be reported as "OK".
+Confirm the check for `10.33.10.1/icingaweb2` on the icinga web frontend. It should be reported as `OK`.
 
 
 -----
