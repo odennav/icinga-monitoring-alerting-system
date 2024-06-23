@@ -21,7 +21,7 @@ The cellusys machines are also known as message-processors.
 
 We'll implement the workflow below:
 
-- Provision Servers
+- Provision Servers with Terraform
 
 - Setup LAMP Stack in Central Server
 
@@ -37,27 +37,70 @@ The LAMP stack is required in central server to host Icinga2 stack.
 
 -----
 
-## Provision Servers
+## Provision Servers with Terraform
 
-**Install Vagrant**
-
-If you haven't installed Vagrant, download it [here](https://developer.hashicorp.com/vagrant/install) and follow the installation instructions for your OS.
-
-If you encounter an issue with Windows, you might get a blue screen upon attempt to bring up a VirtualBox VM with Hyper-V enabled.
-
-To use VirtualBox on Windows, ensure Hyper-V is not enabled. Then turn off the feature with the following Powershell commands:
-
-```console
-Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
-bcdedit /set hypervisorlaunchtype off
-```
-
-After reboot of your local machine, run:
+Install Terraform in `build` machine
 
 ```bash
-vagrant up
-vagrant ssh
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+sudo yum -y install terraform
 ```
+
+Install AWS CLI in `build` machine
+```bash
+sudo apt install curl unzip
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install -i /usr/local/aws-cli -b /usr/local/bin
+```
+
+Confirm the AWS CLI installation
+```bash
+aws --version
+```
+
+Clone this repository in the `build` machine
+```bash
+cd /
+git clone git@github.com:odennav/icinga-monitoring-alerting-system.git
+```
+
+Execute these Terraform commands sequentially in the `build` machine to create the AWS VPC(Virtual Private Cloud) and EC2 instances.
+
+Initializes terraform working directory
+```bash
+cd icinga-monitoring-alerting-system/terraform
+terraform init
+```
+
+Validate the syntax of the terraform configuration files
+```bash
+terraform validate
+```
+
+Create an execution plan that describes the changes terraform will make to the infrastructure
+```bash
+terraform plan
+```
+
+Apply the changes described in execution plan
+```bash
+terraform apply -auto-approve
+```
+
+Check AWS console for instances created and running
+
+**SSH access**
+
+Use `.pem` key from AWS to SSH into the public EC2 instance. IPv4 address of public EC2 instance will be shown in terraform outputs.
+```bash
+ssh -i private-key/terraform-key.pem ec2-user@<ipaddress>
+```
+
+We can use public EC2 instance as a jumpbox to securely SSH into private EC2 instances within the VPC.
+
+Note, the ansible `inventory` is built dynamically by terraform with the private ip addresses of the `EC2` machines.
 
 -----
 
@@ -447,7 +490,7 @@ Click `Finish`
 
 **Access the Icinga Web Frontend**
 
-After the installation is complete, you can access Icinga via the web at `192.168.10.1/icingaweb2`. 
+After the installation is complete, you can access Icinga via the web at `10.33.10.1/icingaweb2`. 
 
 Use username as `admin` and the password as `admin`.
 
@@ -495,12 +538,12 @@ sudo tee /var/www/html/index.html <<EOF
 EOF
 ```
 
-Visit `192.168.10.1` in your web browser and click on the link to visit the Icinga Web front end `192.168.10.1/icingaweb2`
+Visit `10.33.10.1` in your web browser and click on the link to visit the Icinga Web front end `10.33.10.1/icingaweb2`
 
 
 Next, we update the default icinga host monitoring configuration which we recently moved and renamed to master zone configuration directory.
 
-Icinga is currently carrying out checks for the static `HTML` file, we'll have to ensure it also monitors icinga web front end at `192.168.10.1/icingaweb2`.
+Icinga is currently carrying out checks for the static `HTML` file, we'll have to ensure it also monitors icinga web front end at `10.33.10.1/icingaweb2`.
 
 ```bash
 sudo vi /etc/icinga2/zones.d/master/central-server1.conf
@@ -518,7 +561,7 @@ Restart the icinga service
 sudo systemctl restart icinga2.service
 ```
 
-Confirm the check for `192.168.10.1/icingaweb2 on the icinga web frontend. It should be reported as "OK".
+Confirm the check for `10.33.10.1/icingaweb2 on the icinga web frontend. It should be reported as "OK".
 
 
 -----
@@ -560,9 +603,9 @@ ansible --version
 
 **Configure Ansible Vault**
 
-Ansible communicates with target remote servers using SSH and usually we generate RSA key pair and copy the public key to each remote server, instead we'll use username and password credentials of odennav user.
+Ansible communicates with target remote servers using SSH and usually we generate `RSA` key pair and copy the public key to each remote server, instead we'll use username and password credentials of odennav user.
 
-This credentials are added to inventory host file but encrypted with ansible-vault
+This credentials are added to inventory host file but encrypted with ansible-vault.
 
 Ensure all IPv4 addresses and user variables of remote servers are in the inventory file as shown
 
@@ -767,7 +810,7 @@ Confirm the `Host` object in `/etc/icinga2/zones.d/master/message-processor-1.co
 ```text
 object Host "message-processor-1" {
   import "generic-host"
-  address = "192.168.20.2"
+  address = "10.33.10.2"
   vars.os = "Linux"
   vars.http_vhosts["http"] = {
     http_uri = "/"
