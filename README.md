@@ -106,9 +106,17 @@ Note, the ansible `inventory` is built dynamically by terraform with the private
 
 ## Setup LAMP Stack in Central Server
 
-A LAMP stack is a bundle of four different software technologies used to build websites and web applications. 
+LAMP stack is a bundle of four different software technologies used to build websites and web applications. 
 
-LAMP is an acronym for the operating system(Linux), web server(Apache), database server(MariaDB) and PHP programming language.
+It's an acronym for the following:
+
+- Linux
+
+- Apache Web Server
+
+- MariaDB
+
+- PHP programming language.
 
 Install Apache web server
 ```bash
