@@ -1,5 +1,5 @@
 object Endpoint "jenkins-slave-1" {
-host = "192.168.10.8"
+host = "10.33.10.8"
 }
 
 object Zone "jenkins-slave-1" {
@@ -9,7 +9,7 @@ object Zone "jenkins-slave-1" {
 
 object Host "jenkins-slave-1" {
   import "generic-host"
-  address = "192.168.10.8"
+  address = "10.33.10.8"
   vars.os = "Linux"
   vars.http_vhosts["http"] = {
     http_uri = "/"

@@ -1,5 +1,5 @@
 object Endpoint "message-processor-4" {
-host = "192.168.20.5"
+host = "10.33.20.5"
 }
 
 object Zone "message-processor-4" {
@@ -9,7 +9,7 @@ object Zone "message-processor-4" {
 
 object Host "message-processor-4" {
   import "generic-host"
-  address = "192.168.20.5"
+  address = "10.33.20.5"
   vars.os = "Linux"
   vars.http_vhosts["http"] = {
     http_uri = "/"
