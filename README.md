@@ -39,15 +39,7 @@ The LAMP stack is required in central server to host Icinga2 stack.
 
 ## Provision Servers with Terraform
 
-Install Terraform in `build` machine
-
-```bash
-sudo yum install -y yum-utils
-sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
-sudo yum -y install terraform
-```
-
-Install AWS CLI in `build` machine
+Install AWS CLI in `local` machine
 ```bash
 sudo apt install curl unzip
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -60,13 +52,13 @@ Confirm the AWS CLI installation
 aws --version
 ```
 
-Clone this repository in the `build` machine
+Clone this repository in the `local` machine
 ```bash
 cd /
 git clone git@github.com:odennav/icinga-monitoring-alerting-system.git
 ```
 
-Execute these Terraform commands sequentially in the `build` machine to create the AWS VPC(Virtual Private Cloud) and EC2 instances.
+Execute these Terraform commands sequentially in the `local` machine to create the AWS VPC(Virtual Private Cloud) and EC2 instances.
 
 Initializes terraform working directory
 ```bash
